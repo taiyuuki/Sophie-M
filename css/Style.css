@@ -1,0 +1,157 @@
+body {
+    padding: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 1%;
+    margin-right: 1%;
+    line-height: 130%;
+    text-align: justify;
+    font-family: "st","songti","宋体";
+    background-color: #bbf3ff;
+}
+
+h1 {
+    line-height: 130%;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+h2 {
+    line-height: 130%;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: 900;
+    font-family: "gy","fs","fangsong","仿宋";
+    line-height: 150%;
+    text-shadow: 0 0 1px #fff;
+    color: #000;
+}
+
+h4 {
+    font-size: 1.0em;
+    text-align: center;
+    line-height: .8em;
+    text-indent: 0;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+p {
+    text-indent: 2em;
+    display: block;
+    line-height: 1.3em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+details{
+    margin:1em 0;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+.pointer{
+    cursor:pointer
+}
+.pointer:hover{
+    text-shadow:2px 2px 2px #000000;
+}
+
+.cursor{
+    border-radius: 6px;
+    background-color: #07a985;
+    color:#ffffff;
+}
+
+a.cursor:hover {
+    background-color: #0000ff;
+    color:#ffffff;
+}/*鼠标悬停*/
+
+.all{
+    background-color: #fff;
+    margin:0 5%;
+}
+
+.info{
+    border:10px solid #dd0055;
+    border-radius:40px;
+    padding:1em;
+    margin:auto;
+    font-family: "heiti","ht","黑体";
+
+}
+
+.title{
+    background-image: url("../images/bg_point-3.png");
+    padding-left: 60px;
+    background-size: 61px 79px;
+    background-position: left top;
+    background-repeat: no-repeat;
+    margin: auto;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.title h1{
+    font-family: "kaiti","kt","楷体";
+    font-size:1.5em;
+    border: solid 1px #f4cadc;
+    background-color: #fff9f9;
+    display: block;
+    border-radius: 8px;
+    padding:30px 1em;
+    line-height: 1.5rem;
+}
+
+.gnxs{
+    border:20px double #fff;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin:auto;
+    padding: 1em;
+    background-color: #f4cadc;
+    color:#000000;
+    font-family: "kaiti", "kt", "楷体";
+    font-size: 2em;
+}
+
+.gnxs p{
+    text-indent:0;
+    border-radius: 3px;
+    color: #dd0055;
+    font-size: 0.8em;
+}
+
+.gnxs img{
+    height: 1em;
+    margin-bottom: -.2em;
+}
+
+.code{
+    margin: 0 .5em;
+    padding: 2px;
+    border-radius: 3px;
+    font-size: .75em;
+    color: #dd0055;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
