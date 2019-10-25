@@ -1,3 +1,1 @@
 Sophie M 
-epub
-kr
