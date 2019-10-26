@@ -11,7 +11,7 @@ body {
     background-image: url("../images/futaba.png");
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 20%;
+    background-size: 18%;
     background-attachment: fixed;
 }
 
@@ -19,35 +19,6 @@ h1 {
     line-height: 130%;
     text-align: center;
     font-size: xxx-large;
-}
-
-h2 {
-    line-height: 130%;
-    text-align: center;
-    font-weight: bold;
-    font-size: x-large;
-    margin-top: 0.2em;
-    margin-bottom: 0.3em;
-}
-
-h3 {
-    text-align: center;
-    font-size: 1.25em;
-    font-weight: 900;
-    font-family: "gy","fs","fangsong","仿宋";
-    line-height: 150%;
-    text-shadow: 0 0 1px #fff;
-    color: #000;
-}
-
-h4 {
-    font-size: 1.0em;
-    text-align: center;
-    line-height: .8em;
-    text-indent: 0;
-    font-weight: bold;
-    margin-top: 1em;
-    margin-bottom: 1.5em;
 }
 
 p {
@@ -77,9 +48,76 @@ a{
     margin:0 -4em 2em -4em;
     padding:0 4em;
     background-color: #dd0055;
-    height: 1.2em;
     width:100%;
-    verticle-align:middle
+    vertical-align: middle;
+}
+@keyframes mymove {
+    from { transform: rotateZ(360deg); }
+    to { transform: rotateZ(0deg); }
+} /*定义动画样式在Z轴上旋转*/
+.animation {
+    animation-name: mymove; /*定义动画名称mymove*/
+    animation-duration: 5s; /*动画运行时间*/
+    animation-timing-function: linear; /*动画的速度曲线*/
+    animation-iteration-count: infinite; /*动画的播放次数为无限*/
+    -webkit-animation-name: mymove;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+} /*定义动画属性*/
+#one {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 70px #e1e1e1;
+    margin-top:5px;
+} /*底部黑色大圆*/
+#two {
+    background-color: #fff;
+    width: 50px;
+    height: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+} /*上部白色半圆*/
+#three {
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: -12.5px;
+    position: relative;
+} /*左侧白色小圆*/
+#four {
+    background-color: #000;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 25px;
+    position: relative;
+} /*右侧黑色小圆*/
+#five {
+    background-color: #000;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+} /*左侧白色小圆中的黑色圆心*/
+#six {
+    background-color: #fff;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+} /*右侧黑色小圆中的白色圆心*/
+
+.head{
+    text-align: center;
 }
 
 .pointer{
@@ -100,14 +138,20 @@ a.cursor:hover {
     color:#ffffff;
 }/*鼠标悬停*/
 
+a.cursor:active {
+    padding:1px;
+    box-shadow: 2px 2px 2px #000000;
+}
+
 .all{
     background-color: rgba(255,255,255,0.5);
     margin:-2em 5% auto 5%;
     padding-top:2em;
+    border:2px solid #ffffff;
 }
 
 .info{
-    border:10px solid #dd0055;
+    border:4px solid #dd0055;
     border-radius:40px;
     padding:1em;
     font-family: "heiti","ht","黑体";
@@ -123,7 +167,7 @@ a.cursor:hover {
     background-position: left top;
     background-repeat: no-repeat;
     margin: auto;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
     color:#dd0055;
 }
@@ -140,7 +184,7 @@ a.cursor:hover {
 }
 
 .gnxs{
-    border:20px double rgba(255,255,255,0.8);
+    border:6px double rgba(255,255,255,0.9);
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
     margin: 20px;
@@ -148,7 +192,7 @@ a.cursor:hover {
     background-color: rgba(223,7,22,0.5);
     color:#ffffff;
     font-family: "kaiti", "kt", "楷体";
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .gnxs p{
