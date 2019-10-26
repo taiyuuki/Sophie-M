@@ -129,12 +129,11 @@ a{
 
 .cursor{
     border-radius: 6px;
-    background-color: #07a985;
     color:#ffffff;
 }
 
 a.cursor:hover {
-    background-color: #0000ff;
+    background-color: #07a985;
     color:#ffffff;
 }/*鼠标悬停*/
 
