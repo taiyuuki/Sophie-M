@@ -1,3 +1,14 @@
+* {
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+@keyframes background-c {
+    from{background-color:steelblue;}
+    to{ background-color:turquoise;}
+}
 body {
     padding: 0%;
     margin-top: 0%;
@@ -7,7 +18,9 @@ body {
     line-height: 130%;
     text-align: justify;
     font-family: "st","songti","宋体";
-    background-color: #df0716;
+    animation: background-c 8s infinite alternate;
+    position: relative;
+    height: 100%;
     background-image: url("../images/futaba.png");
     background-repeat: no-repeat;
     background-position: right;
@@ -18,7 +31,6 @@ body {
 h1 {
     line-height: 130%;
     text-align: center;
-    font-size: xxx-large;
 }
 
 p {
@@ -29,93 +41,39 @@ p {
 }
 
 div {
-    margin: 0;
-    padding: 0;
-    text-align: justify;
+    display: block;
 }
 
 details{
     margin:1em 0;
-
 }
 
 a{
     text-decoration: none;
 }
-
+.topBg{
+    background:url(../images/bg_donguri.png) center repeat;
+    position:absolute;
+    top:0;
+    left:0;
+    height:calc(1000% + 138px);
+    width: calc(100% + 114px);
+    animation:anime-topBg 8s linear infinite;
+    background-size:114px 138px;
+    opacity:.4;
+    z-index: -1;
+}
+@keyframes anime-topBg{
+    0%{transform:translate3d(-114px,0,0)}
+    100%{transform:translate3d(0,-138px,0)}
+}
 .top{
     color:#ffffff;
-    margin:0 -4em 2em -4em;
-    padding:0 4em;
     background-color: #dd0055;
-    width:100%;
+    margin:0 -20% 50px -20%;
+    width:140%;
     vertical-align: middle;
 }
-@keyframes mymove {
-    from { transform: rotateZ(360deg); }
-    to { transform: rotateZ(0deg); }
-} /*定义动画样式在Z轴上旋转*/
-.animation {
-    animation-name: mymove; /*定义动画名称mymove*/
-    animation-duration: 5s; /*动画运行时间*/
-    animation-timing-function: linear; /*动画的速度曲线*/
-    animation-iteration-count: infinite; /*动画的播放次数为无限*/
-    -webkit-animation-name: mymove;
-    -webkit-animation-duration: 5s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-} /*定义动画属性*/
-#one {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 50%;
-    box-shadow: 0 0 70px #e1e1e1;
-    margin-top:5px;
-} /*底部黑色大圆*/
-#two {
-    background-color: #fff;
-    width: 50px;
-    height: 25px;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-} /*上部白色半圆*/
-#three {
-    background-color: #fff;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-top: -12.5px;
-    position: relative;
-} /*左侧白色小圆*/
-#four {
-    background-color: #000;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-top: -25px;
-    margin-left: 25px;
-    position: relative;
-} /*右侧黑色小圆*/
-#five {
-    background-color: #000;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-} /*左侧白色小圆中的黑色圆心*/
-#six {
-    background-color: #fff;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-} /*右侧黑色小圆中的白色圆心*/
-
 .head{
     text-align: center;
 }
@@ -143,10 +101,12 @@ a.cursor:active {
 }
 
 .all{
-    background-color: rgba(0,0,0,0.2);
+    position:relative;
+    background-color: rgba(0,0,0,0.1);
     margin:-2em 5% auto 5%;
     padding-top:2em;
     border:2px solid #ffffff;
+    z-index: 10;
 }
 
 .info{
@@ -188,7 +148,7 @@ a.cursor:active {
     border-bottom-right-radius: 50px;
     margin: 20px;
     padding: 0.2em 1em;
-    background-color: rgba(223,7,22,0.5);
+    background-color: rgba(255,7,22,0.6);
     color:#ffffff;
     font-family: "kaiti", "kt", "楷体";
     font-size: 1.8em;
