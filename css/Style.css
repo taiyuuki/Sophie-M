@@ -57,7 +57,7 @@ a{
     top:0;
     left:0;
     height:calc(1000% + 138px);
-    width: calc(100% + 114px);
+    width: calc(150% + 114px);
     animation:anime-topBg 8s linear infinite;
     background-size:114px 138px;
     opacity:.4;
