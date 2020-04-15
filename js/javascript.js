@@ -18,12 +18,16 @@ function setUrl(title,url,code){
 
 //文本复制
 function copyText(id) {
-    var text = document.getElementById(id).innerText;//获取提取码
-    var input = document.getElementById("input");//获取文本框对象
-    input.value = text; // 修改文本框的内容
-    input.select(); // 选中文本
+    var text=document.getElementById(id).innerText;
+    var input = document.createElement('input');
+    input.value = text;
+    document.body.appendChild(input);
+    input.select(); // 选择对象
     document.execCommand("copy"); // 执行浏览器复制命令
-    alert("提取码复制成功："+text);//弹出提示
+    input.className = 'input';
+    input.style.display='none';
+    document.body.removeChild(input);
+    alert('复制提取码成功：'+text);
 }
 
 //将字符串转化为二进制的数据
@@ -68,45 +72,45 @@ function binaryToStr(str,password){
  * @param str 标签名：game、lightnovel、novel、asmr
  */
 function getJson(str) {
-        var json;//定义json
-        var request = new XMLHttpRequest();
-        request.open("get","data/"+str+".json");
-        request.responseType = 'text';
-        request.send(null);
-        request.onload=function () {
-            json = JSON.parse(request.responseText);
-            //判断
-            switch (str) {
-                case "game":
-                    json=json.game;
-                    // alert("游戏")
-                    break;
-                case "asmr":
-                    json=json.asmr;
-                    // alert("声音");
-                    break;
-                case "novel":
-                    json=json.novel;
-                    // alert("中文小说");
-                    break;
-                case "lightnovel":
-                    json=json.lightnovel;
-                    // alert("轻小说");alert
-                    break;
-            }
-            // json = json.game;
-            // document.write(json);
-            for (var i = 0; i < json.length;i++){
-                var titleTem = json[i].title;//标题
-                var urlTem = json[i].url;//度盘链接
-                var codeTem = json[i].code;//提取码
-                var index = str + i;//设置id
-                var temTag = document.createElement("p");//创建p标签
-                temTag.setAttribute("id", index);//给p标签添加id
-                document.getElementById(str).append(temTag);//将p标签添加至指定div
-                document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
-            }
-        };
+    var json;//定义json
+    var request = new XMLHttpRequest();
+    request.open("get","data/"+str+".json");
+    request.responseType = 'text';
+    request.send(null);
+    request.onload=function () {
+        json = JSON.parse(request.responseText);
+        //判断
+        switch (str) {
+            case "game":
+                json=json.game;
+                // alert("游戏")
+                break;
+            case "asmr":
+                json=json.asmr;
+                // alert("声音");
+                break;
+            case "novel":
+                json=json.novel;
+                // alert("中文小说");
+                break;
+            case "lightnovel":
+                json=json.lightnovel;
+                // alert("轻小说");alert
+                break;
+        }
+        // json = json.game;
+        // document.write(json);
+        for (var i = 0; i < json.length;i++){
+            var titleTem = json[i].title;//标题
+            var urlTem = json[i].url;//度盘链接
+            var codeTem = json[i].code;//提取码
+            var index = str + i;//设置id
+            var temTag = document.createElement("p");//创建p标签
+            temTag.setAttribute("id", index);//给p标签添加id
+            document.getElementById(str).append(temTag);//将p标签添加至指定div
+            document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
+        }
+    };
 }
 
 //执行函数
