@@ -19,12 +19,14 @@ function setUrl(title,url,code){
 //文本复制
 function copyText(id) {
     var text=document.getElementById(id).innerText;//获取提取码
-    var input = document.getElementById('input');//创建文本框
-    input.value = text;//将提取码写入文本框
-    input.select(); // 选中文本框
+    var input = document.createElement('textarea');//添加标签
+    input.value = text;
+    document.body.appendChild(input);
+    input.select(); // 选择
     document.execCommand("copy"); // 执行浏览器复制命令
-    input.style.display='none';//文本框不可见
+    input.style.display='none';//不可见
     alert('复制提取码成功：'+text);
+    document.body.removeChild(input);//移除
 }
 
 //将字符串转化为二进制的数据
