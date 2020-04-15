@@ -19,15 +19,11 @@ function setUrl(title,url,code){
 //文本复制
 function copyText(id) {
     var text=document.getElementById(id).innerText;//获取提取码
-    var input = document.createElement('input');//创建文本框
-    input.setAttribute("οnfοcus","this.blur()");//禁止文本框输入
+    var input = document.getElementById('input');//创建文本框
     input.value = text;//将提取码写入文本框
-    document.body.appendChild(input);//将文本框添加至body
     input.select(); // 选中文本框
     document.execCommand("copy"); // 执行浏览器复制命令
-    input.className = 'input';
     input.style.display='none';//文本框不可见
-    document.body.removeChild(input);//移除文本框
     alert('复制提取码成功：'+text);
 }
 
