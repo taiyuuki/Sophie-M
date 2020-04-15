@@ -19,7 +19,7 @@ function setUrl(title,url,code){
 //文本复制
 function copyText(id) {
     var text=document.getElementById(id).innerText;//获取提取码
-    var input = document.createElement('textarea');//添加标签
+    var input = document.createElement('input');//添加标签
     input.value = text;
     document.body.appendChild(input);
     input.select(); // 选择
