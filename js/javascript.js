@@ -1,9 +1,22 @@
 
 
 //设置超链接
+var copyindex = 1;
 function setUrl(name,url,code){
-    var dupan = "<a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+name+"</a><span class=\"code\">"+code+"</span> ";
+    var copyid = "copyid_"+copyindex;
+    var dupan = "<a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+name+"</a><button id="+copyid+" class='code' onclick='copyText(\""+copyid+"\")'>"+code+"</button> ";
+    copyindex++;
     return dupan;
+}
+
+//文本复制
+function copyText(id) {
+    var text = document.getElementById(id).innerText;
+    var input = document.getElementById("input");
+    input.value = text; // 修改文本框的内容
+    input.select(); // 选中文本
+    document.execCommand("copy"); // 执行浏览器复制命令
+    alert("提取码复制成功："+text);
 }
 
 //将字符串转化为二进制的数据
