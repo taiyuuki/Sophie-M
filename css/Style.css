@@ -40,6 +40,9 @@ details{
 a{
     text-decoration: none;
 }
+
+#input {position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;}
+
 .topBg{
     position:absolute;
     top:0;
@@ -64,7 +67,8 @@ a{
 }
 
 .pointer{
-    cursor:pointer
+    cursor:pointer;
+    color:white;
 }
 .pointer:hover{
     text-shadow:2px 2px 2px #000000;
@@ -159,4 +163,13 @@ a.cursor:active {
     color: #dd0055;
     background-color: #fafafa;
     border: 1px solid #ddd;
+}
+.code:hover {
+    background-color: #07a985;
+    color:#ffffff;
+}/*鼠标悬停*/
+
+.code:active {
+    padding:1px;
+    box-shadow: 2px 2px 2px #000000;
 }
