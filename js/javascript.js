@@ -20,6 +20,7 @@ function setUrl(title,url,code){
 function copyText(id) {
     var text=document.getElementById(id).innerText;
     var input = document.createElement('input');
+    input.setAttribute("οnfοcus","this.blur()");
     input.value = text;
     document.body.appendChild(input);
     input.select(); // 选择对象
