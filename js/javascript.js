@@ -22,10 +22,21 @@ function copyText(id) {
     var input = document.createElement('input');//添加标签
     input.value = text;
     document.body.appendChild(input);
-    input.select(); // 选择
-    document.execCommand("copy"); // 执行浏览器复制命令
-    input.style.display='none';//不可见
-    alert('复制提取码成功：'+text);
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {//区分iPhone设备
+        window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效
+        var range = document.createRange();
+        range.selectNode(input);// 选中需要复制的节点
+        window.getSelection().addRange(range);// 执行选中元素
+        document.execCommand('copy');// 执行 copy 操作
+        window.getSelection().removeAllRanges();// 移除选中的元素
+        alert('复制提取码成功：'+text);
+    }else{
+        input.select(); // 选择
+        document.execCommand("copy"); // 执行浏览器复制命令
+        input.style.display='none';//不可见
+        input.setAttribute("onfocus","\"this.blur()\"");
+        alert('复制提取码成功：'+text);
+    }
     document.body.removeChild(input);//移除
 }
 
