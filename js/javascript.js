@@ -18,7 +18,8 @@ function setUrl(title,url,code){
 
 //文本复制
 function copyText(id) {
-    var text=document.getElementById(id).value;//获取提取码
+    var btn = document.getElementById(id);
+    var text=btn.value;//获取提取码
     var input = document.createElement('input');//添加标签
     input.value = text;
     document.body.appendChild(input);
@@ -36,9 +37,11 @@ function copyText(id) {
         input.setAttribute("onfocus","\"this.blur()\"");
     }
     document.body.removeChild(input);//移除
-    document.getElementById(id).value ="复制成功";//复制提示
+    btn.value ="复制成功";//复制提示
+    btn.setAttribute("disabled","true");
     setTimeout( function(){
-        document.getElementById(id).value =text;
+        btn.value =text;
+        btn.removeAttribute("disabled");
     }, 1000 );//延时1秒
 }
 
