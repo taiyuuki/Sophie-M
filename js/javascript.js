@@ -1,4 +1,4 @@
-
+var pass = prompt("请输入神秘代码");
 
 //设置超链接
 var copyindex = 1;//复制按钮id编号
@@ -114,6 +114,8 @@ function getJson(str) {
             var titleTem = json[i].title;//标题
             var urlTem = json[i].url;//度盘链接
             var codeTem = json[i].code;//提取码
+            urlTem = "https://pan.baidu.com/s/"+binaryToStr(urlTem,pass);
+            // alert(urlTem);
             var index = str + i;//设置id
             var temTag = document.createElement("p");//创建p标签
             temTag.setAttribute("id", index);//给p标签添加id
