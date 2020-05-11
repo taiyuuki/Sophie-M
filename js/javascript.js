@@ -4,14 +4,14 @@ var pass = prompt("请输入神秘代码");
 var copyindex = 1;//复制按钮id编号
 /**
  *
- * @param name 标题
+ * @param title 标题
  * @param url 度盘链接
  * @param code 提取码
  * @returns {string} 返回<a>标签超链接
  */
 function setUrl(title,url,code){
     var copyid = "copyid_"+copyindex;//复制按钮id
-    var dupan = "<a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a><input class=\"code\" type=\"button\" id=\""+copyid+"\" value=\""+code+"\" onclick='copyText(\""+copyid+"\")'/>";//度盘超链接
+    var dupan = "<a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a><span class='code' id='"+copyid+"'>"+code+"</span><input type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/>";//度盘超链接
     copyindex++;//编号自增
     return dupan;//返回值
 }
@@ -19,9 +19,9 @@ function setUrl(title,url,code){
 //文本复制
 function copyText(id) {
     var btn = document.getElementById(id);
-    var text=btn.value;//获取提取码
+    var code=btn.innerText;//获取提取码
     var input = document.createElement('input');//添加标签
-    input.value = text;
+    input.value = code;
     document.body.appendChild(input);
     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {//区分iPhone设备
         window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效
@@ -37,10 +37,10 @@ function copyText(id) {
         input.setAttribute("onfocus","\"this.blur()\"");
     }
     document.body.removeChild(input);//移除
-    btn.value ="复制成功";//复制提示
+    btn.innerHTML ="已复制";//复制提示
     btn.setAttribute("disabled","true");
     setTimeout( function(){
-        btn.value =text;
+        btn.innerHTML =code;
         btn.removeAttribute("disabled");
     }, 1000 );//延时1秒
 }
@@ -82,7 +82,7 @@ function binaryToStr(str,password){
 }
 
 //读取json数据文件
-/**
+/**-
  *
  * @param str 标签名：game、lightnovel、novel、asmr
  */
