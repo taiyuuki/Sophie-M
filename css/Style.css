@@ -164,12 +164,3 @@ a.cursor:active {
     background-color: #fafafa;
     border: 1px solid #ddd;
 }
-.code:hover {
-    background-color: #07a985;
-    color:#ffffff;
-}/*鼠标悬停*/
-
-.code:active {
-    padding:1px;
-    box-shadow: 2px 2px 2px #000000;
-}
