@@ -81,6 +81,17 @@ function binaryToStr(str,password){
     return result.join("");
 }
 
+function checknum(value) {
+    var str = value.replace(/\s*/g, '').replace('_','').replace('-','');
+    var Regx = /^[A-Za-z0-9]*$/;
+    if (Regx.test(str)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 //读取json数据文件
 /**-
  *
@@ -115,26 +126,36 @@ function getJson(str) {
         }
         // json = json.game;
         // document.write(json);
-        for (var i = 0; i < json.length;i++){
-            var titleTem = json[i].title;//标题
-            var urlTem = json[i].url;//度盘链接
-            var codeTem = json[i].code;//提取码
-            urlTem = "https://pan.baidu.com/s/"+binaryToStr(urlTem,pass);
-            // alert(urlTem);
-            var index = str + i;//设置id
-            var temTag = document.createElement("p");//创建p标签
-            temTag.setAttribute("id", index);//给p标签添加id
-            document.getElementById(str).append(temTag);//将p标签添加至指定div
-            document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
+        var tests = checknum(binaryToStr(json[2].url,pass));
+        if (tests){
+            for (var i = 0; i < json.length;i++){
+                var titleTem = json[i].title;//标题
+                var urlTem = json[i].url;//度盘链接
+                var codeTem = json[i].code;//提取码
+                urlTem = "https://pan.baidu.com/s/"+binaryToStr(urlTem,pass);
+                // alert(urlTem);
+                var index = str + i;//设置id
+                var temTag = document.createElement("p");//创建p标签
+                temTag.setAttribute("id", index);//给p标签添加id
+                document.getElementById(str).append(temTag);//将p标签添加至指定div
+                document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
+            }
+        }else {
+            var erro = document.createElement('p');
+            document.getElementById(str).innerHTML = '您输入的神秘代码错误';
         }
+
     };
 }
+
 
 //执行函数
 getJson("game");
 getJson("novel");
 getJson("lightnovel");
 getJson("asmr");
+
+
 
 //给html页面添加内容
 /**
