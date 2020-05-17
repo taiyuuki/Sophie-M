@@ -164,3 +164,23 @@ a.cursor:active {
     background-color: #fafafa;
     border: 1px solid #ddd;
 }
+
+.btn{
+    margin: 0 .5em;
+    padding: 1px;
+    border-radius: 3px;
+    font-size: .6em;
+    color: #dd0055;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.btn:hover {
+    background-color: #07a985;
+    color:#ffffff;
+}
+
+.btn:active {
+    padding:1px;
+    box-shadow: 2px 2px 2px #000000;
+}
