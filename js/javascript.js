@@ -1,4 +1,8 @@
-var pass = prompt("请输入神秘代码");
+
+if(pass == null){
+    var pass = prompt("请输入神秘代码");
+}
+
 
 //设置超链接
 var copyindex = 1;//复制按钮id编号
@@ -11,7 +15,7 @@ var copyindex = 1;//复制按钮id编号
  */
 function setUrl(title,url,code){
     var copyid = "copyid_"+copyindex;//复制按钮id
-    var dupan = "<a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a><br/><span class='code' id='"+copyid+"'>"+code+"</span><input class='btn' type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/>";//度盘超链接
+    var dupan = "<td class='tabline'><a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a></td><td style='width: 3em'><span class='code' id='"+copyid+"'>"+code+"</span></td><td><input class='btn' type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/></td>";//度盘超链接
     copyindex++;//编号自增
     return dupan;//返回值
 }
@@ -97,37 +101,53 @@ function checknum(value) {
  *
  * @param str 标签名：game、lightnovel、novel、asmr
  */
+
+function  defautPageClass() {
+    document.getElementById('page_g').setAttribute('class','page');
+    document.getElementById('page_a').setAttribute('class','page');
+    document.getElementById('page_l').setAttribute('class','page');
+    document.getElementById('page_n').setAttribute('class','page');
+}
+
 function getJson(str) {
-    var json;//定义json
+    var json;
     var request = new XMLHttpRequest();
     request.open("get","data/"+str+".json");
     request.responseType = 'text';
     request.send(null);
     request.onload=function () {
         json = JSON.parse(request.responseText);
-        //判断
+        defautPageClass();
         switch (str) {
             case "game":
                 json=json.game;
-                // alert("游戏")
+                document.getElementById('page_g').setAttribute('class','pageselected');
                 break;
             case "asmr":
                 json=json.asmr;
-                // alert("声音");
-                break;
-            case "novel":
-                json=json.novel;
-                // alert("中文小说");
+                document.getElementById('page_a').setAttribute('class','pageselected');
                 break;
             case "lightnovel":
                 json=json.lightnovel;
-                // alert("轻小说");alert
+                document.getElementById('page_l').setAttribute('class','pageselected');
+                break;
+            case "novel":
+                json=json.novel;
+                document.getElementById('page_n').setAttribute('class','pageselected');
                 break;
         }
-        // json = json.game;
-        // document.write(json);
+
         var tests = checknum(binaryToStr(json[2].url,pass));
         if (tests){
+            var page = document.createElement('div');
+            if(document.getElementById("gnxs"))
+            {
+                document.getElementById("gnxs").remove();
+            }
+            page.setAttribute('id','gnxs');
+            document.getElementById('all').append(page);
+            document.getElementById('gnxs').innerHTML = "<table id = "+str+" cellpadding=\"10\" cellspacing='10' class='table'></table>";
+
             for (var i = 0; i < json.length;i++){
                 var titleTem = json[i].title;//标题
                 var urlTem = json[i].url;//度盘链接
@@ -135,49 +155,24 @@ function getJson(str) {
                 urlTem = "https://pan.baidu.com/s/"+binaryToStr(urlTem,pass);
                 // alert(urlTem);
                 var index = str + i;//设置id
-                var temTag = document.createElement("p");//创建p标签
+
+                var temTag = document.createElement("tr");//创建p标签
                 temTag.setAttribute("id", index);//给p标签添加id
                 document.getElementById(str).append(temTag);//将p标签添加至指定div
                 document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
             }
         }else {
-            var erro = document.createElement('p');
-            document.getElementById(str).innerHTML = '您输入的神秘代码错误';
+            alert('错误！请关注公众号（SM_Flatfoosie）回复 SM 获取神秘代码');
+            pass = prompt("请输入神秘代码");
+            getJson(str);
         }
 
     };
 }
 
-
-//执行函数
 getJson("game");
-getJson("novel");
-getJson("lightnovel");
-getJson("asmr");
-
-
-
-//给html页面添加内容
-/**
- *
- * @param str 标签id
- * @param array 添加内容，二维数组
- */
-function addTag(str,array) {
-    for (var i = 0 ;i<array.length;i++) {
-        var index = str + i;
-        var temtag = document.createElement("p");
-        temtag.setAttribute("id", index);
-        document.getElementById(str).append(temtag);
-        document.getElementById(index).innerHTML = setUrl(array[i][0], array[i][1], array[i][2]);
-    }
-}
-
-//执行添加函数
-// addTag("asmr",asmrArray);
-// addTag("lightnovel",lightNovelArray);
-// addTag("novel",novelArray);
-// addTag("game",gameArray);
-
-
-// document.getElementById('asmr1').innerHTML=setUrl("百度网盘地址","https://pan.baidu.com","提取码");
+//执行函数
+// getJson("game");
+// getJson("novel");
+// getJson("lightnovel");
+// getJson("asmr");
