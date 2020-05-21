@@ -9,8 +9,8 @@
 <h1 class="top">
     <div class="head">个人资源整合</div>
 </h1>
-<div class="all">
-    <section>
+<div id="all">
+
     <div class="info">
         <div class="title">
             <div>说明</div>
@@ -21,26 +21,12 @@
         <p>4.链接失效可以在公众号留言反馈，我一定会补档，但不保证及时。</p>
         <p>5.更新：2020年4月30日。</p>
     </div>
-    </section>
-    <div class="gnxs">
-        <details open>
-            <summary><span class="pointer">游戏</span></summary>
-            <div id="game"></div>
-        </details>
-        <details close>
-            <summary><span class="pointer">ASMR</span></summary>
-            <div id="asmr"></div>
-        </details>
 
-        <details close>
-            <summary><span class="pointer">轻小说</span></summary>
-            <div id="lightnovel"></div>
-        </details>
-
-        <details close>
-        <summary><span class="pointer">中文小说</span></summary>
-            <div id="novel"></div>
-    </details>
+    <div class="pagebtn">
+    <button class='page' id="page_g" onclick="getJson('game')">游戏</button>
+    <button class='page' id="page_a" onclick="getJson('asmr')">ASMR</button>
+    <button class='page' id="page_l" onclick="getJson('lightnovel')">轻小说</button>
+    <button class='page' id="page_n" onclick="getJson('novel')">小说</button>
     </div>
 </div>
 <div style="text-align: center"><img width="30%" src="https://s1.ax1x.com/2020/04/14/Jp17oq.jpg"></div>
