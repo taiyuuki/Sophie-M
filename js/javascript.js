@@ -41,7 +41,7 @@ function copyText(id) {
         input.setAttribute("onfocus","\"this.blur()\"");
     }
     document.body.removeChild(input);//移除
-    btn.innerHTML ="已复制";//复制提示
+    alert('提取码已复制')//复制提示
     btn.setAttribute("disabled","true");
     setTimeout( function(){
         btn.innerHTML =code;
