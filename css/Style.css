@@ -101,7 +101,7 @@ a.cursor:active {
     font-family: "heiti","ht","黑体";
     font-size: 1.5em;
     margin: 1em;
-    color:#ffffff;
+    color: #000000;
 }
 
 .title{
@@ -186,7 +186,7 @@ a.cursor:active {
     height:37px;
     cursor:pointer;
     font-size: 1.2em;
-    color: white;
+    color: #000000;
     background-color: aqua;
 }
 
