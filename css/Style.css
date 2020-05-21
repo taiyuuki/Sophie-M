@@ -5,15 +5,12 @@
     margin: 0;
     padding: 0;
 }
-@keyframes background-c {
-    from{background-color:steelblue;}
-    to{ background-color:turquoise;}
-}
+
 body {
     line-height: 130%;
     text-align: justify;
     font-family: "st","songti","宋体";
-    animation: background-c 8s infinite alternate;
+    background-color: aqua;
     position: relative;
 }
 
@@ -89,7 +86,7 @@ a.cursor:active {
     box-shadow: 2px 2px 2px #000000;
 }
 
-.all{
+#all{
     position:relative;
     background-color: rgba(0,0,0,0.1);
     margin:10px;
@@ -130,31 +127,27 @@ a.cursor:active {
     width: max-content;
 }
 
-.gnxs{
+#gnxs{
+    font-family: "heiti", "ht", "黑体";
+}
+
+.table{
     border:6px double rgba(255,255,255,0.9);
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    margin: 20px;
+    margin: -0.1em 20px 20px 20px;
     padding: 0.2em 1em;
     background-color: rgba(255,7,22,0.6);
     color:#ffffff;
-    font-family: "kaiti", "kt", "楷体";
-    font-size: 1.8em;
+    font-family: "heiti", "ht", "黑体";
+    font-size: 2em;
+    width: 95%;
 }
 
-.gnxs p{
-    margin-left: 1em;
-    border-radius: 3px;
-    color: #dd0055;
-    font-size: 0.8em;
-    font-family: "heiti","ht","黑体";
+.tabline{
+    line-height: 1em;
+    border-bottom: 1px solid #ffffff;
 }
-
-.gnxs img{
-    height: 1em;
-    margin-bottom: -.2em;
-}
-
 .code{
     margin: 0 .5em;
     padding: 2px;
@@ -183,4 +176,37 @@ a.cursor:active {
 .btn:active {
     padding:1px;
     box-shadow: 2px 2px 2px #000000;
+}
+
+.pagebtn{
+    margin-left:5em;
+}
+
+.page {
+    padding: 1px;
+    border-radius: 3px;
+    height:37px;
+    cursor:pointer;
+    font-size: 1.2em;
+    color: white;
+    background-color: aqua;
+}
+
+.page:hover {
+    background-color: #fafafa;
+    color:#000000;
+}
+
+.page:active {
+    padding:1px;
+}
+
+.pageselected {
+    padding: 1px;
+    border-radius: 3px;
+    height:37px;
+    cursor:pointer;
+    font-size: 1.2em;
+    color: #dd0055;
+    background-color: #fafafa;
 }
