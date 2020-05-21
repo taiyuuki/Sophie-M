@@ -15,7 +15,7 @@ var copyindex = 1;//复制按钮id编号
  */
 function setUrl(title,url,code){
     var copyid = "copyid_"+copyindex;//复制按钮id
-    var dupan = "<td class='tabline'><a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a></td><td style='width: 3em'><span class='code' id='"+copyid+"'>"+code+"</span></td><td><input class='btn' type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/></td>";//度盘超链接
+    var dupan = "<td class='tabline'><a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a></td><td style='width: 4em'><span class='code' id='"+copyid+"'>"+code+"</span></td><td><input class='btn' type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/></td>";//度盘超链接
     copyindex++;//编号自增
     return dupan;//返回值
 }
