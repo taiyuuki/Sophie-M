@@ -1,6 +1,8 @@
+var pass;
 
-if(pass == null){
-    var pass = prompt("请输入神秘代码");
+function getPassword() {
+    pass = document.getElementById('pw').value;
+    getJson('game');
 }
 
 
@@ -140,10 +142,16 @@ function getJson(str) {
         var tests = checknum(binaryToStr(json[2].url,pass));
         if (tests){
             var page = document.createElement('div');
+
             if(document.getElementById("gnxs"))
             {
                 document.getElementById("gnxs").remove();
             }
+
+            if(document.getElementById('codeinput')){
+                document.getElementById('codeinput').remove();
+            }
+
             page.setAttribute('id','gnxs');
             document.getElementById('all').append(page);
             document.getElementById('gnxs').innerHTML = "<table id = "+str+" cellpadding=\"10\" cellspacing='10' class='table'></table>";
@@ -162,15 +170,11 @@ function getJson(str) {
                 document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
             }
         }else {
-            alert('错误！请关注公众号（SM_Flatfoosie）回复 SM 获取神秘代码');
-            pass = prompt("请输入神秘代码");
-            getJson(str);
+            alert('请关注公众号（SM_Flatfoosie）回复 SM 获取神秘代码');
         }
 
     };
 }
-
-getJson("game");
 //执行函数
 // getJson("game");
 // getJson("novel");
