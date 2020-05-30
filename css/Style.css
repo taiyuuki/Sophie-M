@@ -40,6 +40,13 @@ a{
 
 #input {position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;}
 
+#codeinput {
+    text-align: center;
+    font-family: "heiti","ht","黑体";
+    font-size: 1.5em;
+    color: #000000;
+}
+
 .topBg{
     position:absolute;
     top:0;
@@ -113,7 +120,7 @@ a.cursor:active {
     margin: auto;
     font-size: 1.2em;
     text-align: center;
-    color:#ffffff;
+    color:#000000;
 }
 
 .title div{
