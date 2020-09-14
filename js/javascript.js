@@ -5,6 +5,10 @@ function getPassword() {
     getJson('game');
 }
 
+function home() {
+    location.reload();
+    pass = document.getElementById('pw').value;
+}
 
 //设置超链接
 var copyindex = 1;//复制按钮id编号
