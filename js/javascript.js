@@ -1,4 +1,5 @@
 var pass;
+pass = document.getElementById('pw').value;
 
 function getPassword() {
     pass = document.getElementById('pw').value;
