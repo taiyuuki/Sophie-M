@@ -13,13 +13,39 @@ var copyindex = 1;//复制按钮id编号
  * @param title 标题
  * @param url 度盘链接
  * @param code 提取码
- * @returns {string} 返回<a>标签超链接
  */
 function setUrl(title,url,code){
     var copyid = "copyid_"+copyindex;//复制按钮id
-    var dupan = "<td class='tabline'><a class=\"cursor\" href=\""+url+"\" target=\"_blank\">"+title+"</a></td><td style='width: 4em'><span class='code' id='"+copyid+"'>"+code+"</span></td><td><input class='btn' type=\"button\" value=\"复制\" onclick='copyText(\""+copyid+"\")'/></td>";//度盘超链接
+
+    var d1,d2,d3,d4;
+    d1 = document.createElement("div");
+    d2 = document.createElement("div");
+    d3 = document.createElement("div");
+    d1.setAttribute("class","subject");
+    d2.setAttribute("class","subjectTitle");
+    d3.setAttribute("class","subjectLinks");
+
+    d2.innerHTML=title;
+    d3.innerHTML="<a class=\"download\" target=\"_blank\" href=\""+url+"\" title=\""+url+"\">百度网盘</a><div class=\"code\" id=\""+copyid+"\">"+code+"</div><input class='btn' type=\"button\" value=\"复制提取码\" onclick=\"copyText('"+copyid+"')\"/>";
+    d1.appendChild(d2);
+    d1.appendChild(d3);
+    document.getElementById("all").appendChild(d1);
+
     copyindex++;//编号自增
-    return dupan;//返回值
+}
+
+/**
+ * 提示
+ * @param str 提示内容，不要超过3个汉字
+ */
+function tip(str) {
+    var tip = document.createElement("div");
+    tip.setAttribute("class","copyal");
+    tip.innerHTML=str;
+    document.getElementById("featured").appendChild(tip);
+    setTimeout(function () {
+        document.getElementById("featured").removeChild(tip);
+    },2000);
 }
 
 //文本复制
@@ -43,12 +69,13 @@ function copyText(id) {
         input.setAttribute("onfocus","\"this.blur()\"");
     }
     document.body.removeChild(input);//移除
-    alert('提取码已复制')//复制提示
+    //复制提示
     btn.setAttribute("disabled","true");
     setTimeout( function(){
         btn.innerHTML =code;
         btn.removeAttribute("disabled");
     }, 1000 );//延时1秒
+    tip("已复制");
 }
 
 //将字符串转化为二进制的数据
@@ -105,78 +132,86 @@ function checknum(value) {
  */
 
 function  defautPageClass() {
+    document.getElementById('page_t').setAttribute('class','page');
     document.getElementById('page_g').setAttribute('class','page');
     document.getElementById('page_a').setAttribute('class','page');
     document.getElementById('page_l').setAttribute('class','page');
     document.getElementById('page_n').setAttribute('class','page');
+    document.getElementById('page_m').setAttribute('class','page');
+}
+
+function clear() {
+    if(document.getElementById("all"))
+    {
+        document.getElementById("all").remove();
+    }
+
+    if(document.getElementById('codeinput')){
+        document.getElementById('codeinput').remove();
+    }
+
+    if(document.getElementById('msg')){
+        document.getElementById('msg').remove();
+    }
+}
+
+function feed() {
+    clear();
+    var d0 = document.createElement("div");
+    d0.setAttribute("id","all");
+    document.getElementById("featured").appendChild(d0);
+    var img = document.createElement("img");
+    img.setAttribute("src","https://s1.ax1x.com/2020/04/14/Jp17oq.jpg");
+    img.setAttribute("width","100%")
+    document.getElementById("all").appendChild(img);
+    defautPageClass();
+    document.getElementById('page_m').setAttribute('class', 'pageselected');
 }
 
 function getJson(str) {
     var json;
     var request = new XMLHttpRequest();
-    request.open("get","data/"+str+".json");
+    request.open("get", "data/" + str + ".json");
     request.responseType = 'text';
     request.send(null);
-    request.onload=function () {
+    request.onload = function () {
         json = JSON.parse(request.responseText);
         defautPageClass();
         switch (str) {
             case "game":
-                json=json.game;
-                document.getElementById('page_g').setAttribute('class','pageselected');
+                json = json.game;
+                document.getElementById('page_g').setAttribute('class', 'pageselected');
                 break;
             case "asmr":
-                json=json.asmr;
-                document.getElementById('page_a').setAttribute('class','pageselected');
+                json = json.asmr;
+                document.getElementById('page_a').setAttribute('class', 'pageselected');
                 break;
             case "lightnovel":
-                json=json.lightnovel;
-                document.getElementById('page_l').setAttribute('class','pageselected');
+                json = json.lightnovel;
+                document.getElementById('page_l').setAttribute('class', 'pageselected');
                 break;
             case "novel":
-                json=json.novel;
-                document.getElementById('page_n').setAttribute('class','pageselected');
+                json = json.novel;
+                document.getElementById('page_n').setAttribute('class', 'pageselected');
                 break;
         }
-
         var tests = checknum(binaryToStr(json[2].url,pass));
         if (tests){
-            var page = document.createElement('div');
-
-            if(document.getElementById("gnxs"))
-            {
-                document.getElementById("gnxs").remove();
-            }
-
-            if(document.getElementById('codeinput')){
-                document.getElementById('codeinput').remove();
-            }
-
-            page.setAttribute('id','gnxs');
-            document.getElementById('all').append(page);
-            document.getElementById('gnxs').innerHTML = "<table id = "+str+" cellpadding=\"10\" cellspacing='10' class='table'></table>";
-
+            clear();
+            var d0 = document.createElement("div");
+            d0.setAttribute("id","all");
+            document.getElementById("featured").appendChild(d0);
             for (var i = 0; i < json.length;i++){
                 var titleTem = json[i].title;//标题
                 var urlTem = json[i].url;//度盘链接
                 var codeTem = json[i].code;//提取码
                 urlTem = "https://pan.baidu.com/s/"+binaryToStr(urlTem,pass);
                 // alert(urlTem);
-                var index = str + i;//设置id
-
-                var temTag = document.createElement("tr");//创建p标签
-                temTag.setAttribute("id", index);//给p标签添加id
-                document.getElementById(str).append(temTag);//将p标签添加至指定div
-                document.getElementById(index).innerHTML = setUrl(titleTem, urlTem, codeTem);//在p标签内写入超链接
+                setUrl(titleTem, urlTem, codeTem);
             }
+            copyindex = 1;
         }else {
-            alert('请关注公众号（SM_Flatfoosie）回复 SM 获取神秘代码');
+            tip("答案错误");
         }
-
-    };
+    }
 }
-//执行函数
-// getJson("game");
-// getJson("novel");
-// getJson("lightnovel");
-// getJson("asmr");
