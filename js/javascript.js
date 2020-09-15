@@ -8,7 +8,6 @@ function getPassword() {
 
 function home() {
     location.reload();
-    pass = document.getElementById('pw').value;
 }
 
 //设置超链接
@@ -142,6 +141,7 @@ function  defautPageClass() {
     document.getElementById('page_a').setAttribute('class','page');
     document.getElementById('page_l').setAttribute('class','page');
     document.getElementById('page_n').setAttribute('class','page');
+    document.getElementById('page_u').setAttribute('class','page');
     document.getElementById('page_m').setAttribute('class','page');
 }
 
@@ -198,6 +198,10 @@ function getJson(str) {
             case "novel":
                 json = json.novel;
                 document.getElementById('page_n').setAttribute('class', 'pageselected');
+                break;
+            case "updata":
+                json = json.updata;
+                document.getElementById('page_u').setAttribute('class', 'pageselected');
                 break;
         }
         var tests = checknum(binaryToStr(json[2].url,pass));
