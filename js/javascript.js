@@ -204,7 +204,7 @@ function getJson(str) {
                 document.getElementById('page_u').setAttribute('class', 'pageselected');
                 break;
         }
-        var tests = checknum(binaryToStr(json[2].url,pass));
+        var tests = checknum(binaryToStr(json[4].url,pass));
         if (tests){
             clear();
             var d0 = document.createElement("div");
