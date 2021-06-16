@@ -30,7 +30,7 @@ function setUrl(title,url,code){
     d3.setAttribute("class","subjectLinks");
 
     d2.innerHTML=title;
-    d3.innerHTML="<a class=\"download\" target=\"_blank\" href=\""+url+"\" title=\""+url+"\">百度网盘</a><div class=\"code\" id=\""+copyid+"\">"+code+"</div><input class='btn' type=\"button\" value=\"复制提取码\" onclick=\"copyText('"+copyid+"')\"/>";
+    d3.innerHTML="<a class=\"download\" target=\"_blank\" href=\""+url+"\" title=\""+url+"\">百度网盘</a><div class=\"code\" id=\""+copyid+"\">"+code+"</div><a class='btn' type=\"button\" href=\"javascript:copyText('"+copyid+"')\"/>复制提取码</a>";
     d1.appendChild(d2);
     d1.appendChild(d3);
     document.getElementById("all").appendChild(d1);
@@ -46,9 +46,9 @@ function tip(str) {
     var tip = document.createElement("div");
     tip.setAttribute("class","copyal");
     tip.innerHTML=str;
-    document.getElementById("featured").appendChild(tip);
+    document.getElementById("container").appendChild(tip);
     setTimeout(function () {
-        document.getElementById("featured").removeChild(tip);
+        document.getElementById("container").removeChild(tip);
     },2000);
 }
 
@@ -135,16 +135,6 @@ function checknum(value) {
  * @param str 标签名：game、lightnovel、novel、asmr
  */
 
-function  defautPageClass() {
-    document.getElementById('page_t').setAttribute('class','page');
-    document.getElementById('page_g').setAttribute('class','page');
-    document.getElementById('page_a').setAttribute('class','page');
-    document.getElementById('page_l').setAttribute('class','page');
-    document.getElementById('page_n').setAttribute('class','page');
-    document.getElementById('page_u').setAttribute('class','page');
-    document.getElementById('page_m').setAttribute('class','page');
-}
-
 function clear() {
     if(document.getElementById("all"))
     {
@@ -158,13 +148,15 @@ function clear() {
     if(document.getElementById('msg')){
         document.getElementById('msg').remove();
     }
+
+    document.getElementById("container").innerHTML="";
 }
 
 function feed() {
     clear();
     var d0 = document.createElement("div");
     d0.setAttribute("id","all");
-    document.getElementById("featured").appendChild(d0);
+    document.getElementById("container").appendChild(d0);
     var img = document.createElement("img");
     img.setAttribute("src","https://s1.ax1x.com/2020/04/14/Jp17oq.jpg");
     img.setAttribute("width","100%")
@@ -181,27 +173,21 @@ function getJson(str) {
     request.send(null);
     request.onload = function () {
         json = JSON.parse(request.responseText);
-        defautPageClass();
         switch (str) {
             case "game":
                 json = json.game;
-                document.getElementById('page_g').setAttribute('class', 'pageselected');
                 break;
             case "asmr":
                 json = json.asmr;
-                document.getElementById('page_a').setAttribute('class', 'pageselected');
                 break;
             case "lightnovel":
                 json = json.lightnovel;
-                document.getElementById('page_l').setAttribute('class', 'pageselected');
                 break;
             case "novel":
                 json = json.novel;
-                document.getElementById('page_n').setAttribute('class', 'pageselected');
                 break;
             case "updata":
                 json = json.updata;
-                document.getElementById('page_u').setAttribute('class', 'pageselected');
                 break;
         }
         var tests = checknum(binaryToStr(json[3].url,pass));
@@ -209,7 +195,7 @@ function getJson(str) {
             clear();
             var d0 = document.createElement("div");
             d0.setAttribute("id","all");
-            document.getElementById("featured").appendChild(d0);
+            document.getElementById("container").appendChild(d0);
             for (var i = 0; i < json.length;i++){
                 var titleTem = json[i].title;//标题
                 var urlTem = json[i].url;//度盘链接
