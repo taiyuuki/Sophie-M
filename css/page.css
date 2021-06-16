@@ -1,0 +1,227 @@
+@charset "utf-8";
+
+/*--━━━━━━━━━━━━━━━━━━━━━━━━━━
+▼全局样式
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━--*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+ul { list-style: none; }
+a img {
+	transition: all 0.6s;
+	opacity: 1;
+}
+a img:hover {
+	opacity: 0.6;
+}
+
+.cf {zoom:1;}
+.cf:before,.cf:after {
+	content: "";
+	display: table;
+}
+.cf:after {clear: both;}
+/*--━━━━━━━━━━━━━━━━━━━━━━━━━━
+▼页面
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━--*/
+
+html{
+	font-size: 62.5%;
+	line-height: 1.0;
+	color: #000;
+}
+
+a {
+	color: #0362ff;
+	transition: color 0.6s;
+}
+a:hover {
+	color: #03deff;
+}
+
+header {
+	width: 100%;
+	background: rgba(255,0,200,0.3);
+	box-shadow: 0 0 5px rgba(0,0,0,0.35);
+	padding: 15px 0;
+	margin-bottom: 20px;
+	position: fixed;
+	z-index: 100;
+}
+nav ul {
+	text-align: center;
+}
+nav ul li {
+	height: 40px;
+	display: inline-block;
+}
+nav ul li a {
+	font-size: 1.2rem;
+	font-weight: bold;
+	line-height: 23px;
+	color: #001f28;
+	width: 130px; height: 100%;
+	display: block;
+	background: #FFF;
+	border-radius: 5px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.35);
+	text-decoration: none;
+	border-bottom: solid 5px #c71585;
+	transition: all 0.3s;
+}
+nav ul li a:hover {
+	color: #FFF;
+	background: #ff78b3;
+}
+nav ul li a span {
+	font-size: 1.0rem;
+	color: #e4007f;
+	display: block;
+	margin-top: -10px;
+}
+
+
+#container {
+	width: 980px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#container h2 {
+	height: 40px;
+	font-size: 2.0rem;
+	line-height: 42px;
+	color: #FFF;
+	font-weight: bold;
+	background: #001f28;
+	border-radius: 5px;
+	margin: 0 0 15px;
+	padding: 0 15px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.35);
+}
+#container h2:before {
+	content: "■";
+	font-family: fontawesome;
+	color: rgba(255,255,255,0.45);
+	margin-right: 5px;
+}
+
+
+section {
+	width: 100%;
+	padding: 15px;
+	background: #FFF;
+	border-bottom: solid 10px #ff69b4;
+	border-radius: 5px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.35);
+	margin-bottom: 30px;
+}
+section > h3 {
+	width: 100%; min-height: 40px; 
+	font-size: 1.6rem;
+	line-height: 40px;
+	color: #FFF;
+	background: #ff69b4;
+	padding: 0 10px;
+	margin-bottom: 15px;
+}
+section > h4 {
+	font-size: 1.4rem;
+	color: #FFF;
+	background: #db7093;
+	display: inline-block;
+	padding: 7px 15px 5px 10px;
+	margin-bottom: 5px;
+	border-radius: 0 1.4rem 1.4rem 0;
+	border-left: solid 5px #dc143c;
+}
+section > h5 {
+	font-size: 1.4rem;
+	color: #FFF;
+	background: #dc143c;
+	padding: 10px 15px 7px;
+	margin-bottom: 15px;
+	border-left: solid 5px #CCC;
+}
+section > p {
+	width: 98%;
+	font-size: 1.4rem;
+	line-height: 150%;
+	margin: 0 auto 1.4rem;
+} 
+section > table {
+	width: 98%;
+	margin: 0 auto 1.4rem;
+	border-collapse: collapse;
+	border: solid 3px #c71585;
+}
+section > table th {
+	font-size: 1.4rem;
+	line-height: 150%;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	border: solid 1px #c71585;
+	padding: 5px;
+	background: #db7093;
+	color: #FFF;
+}
+
+section > table td {
+	text-align: left;
+	border: solid 1px #c71585;
+	padding: 5px;
+}
+section > table td p {
+	font-size: 1.4rem;
+	line-height: 150%;
+}
+section > table td h5 {
+	font-size: 1.4rem;
+	color: #FFF;
+	display: inline-block;
+	background: #35322e;
+	display: inline-block;
+	padding: 7px 15px 5px 10px;
+	margin-bottom: 5px;
+	border-radius: 0 1.4rem 1.4rem 0;
+	border-left: solid 5px #b1aaa4;
+}
+section > ul {
+	width: 95%;
+	margin: 0 auto 10px;
+	font-size: 1.4rem;
+	line-height: 150%;
+}
+section > ul li {
+	position: relative;
+}
+section > ul li:before {
+	position: absolute;
+	top: 1px;
+	left: -15px;
+	content: "＊";
+	font-family: fontawesome;
+	color: #ff69b4;
+}
