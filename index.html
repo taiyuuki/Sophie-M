@@ -1,51 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <title>个人资源合集</title>
-    <link href="./css/Main.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/page.css" />
+    <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+    <link rel="stylesheet" type="text/css" href="css/Main.css" />
 </head>
+
 <body>
+<header>
+    <nav><ul>
+        <li><a href="./">首页<span>TOP</span></a></li>
+        <li><a href="javascript:getJson('game');">游戏<span>GAME</span></a></li>
+        <li><a href="javascript:getJson('asmr');">音声<span>ASMR</span></a></li>
+        <li><a href="javascript:getJson('lightnovel');">官能小说<span>LightNovel</span></a></li>
+        <li><a href="javascript:getJson('novel');">绯色小说<span>Novel</span></a></li>
+        <li><a href="javascript:getJson('updata');">补档与更新<span>Updata</span></a></li>
+        <li><a href="javascript:feed();">投食<span>SUPPORT</span></a></li>
+    </ul></nav>
+</header>
 
-<div id="content">
-    <ul class="pagebtn">
-        <li>
-            <button class='pageselected' id="page_t" onclick="home()">主页</button>
-        </li>
-        <li>
-            <button class='page' id="page_g" onclick="getJson('game')">游戏</button>
-        </li>
-        <li>
-            <button class='page' id="page_a" onclick="getJson('asmr')">ASMR</button>
-        </li>
-        <li>
-            <button class='page' id="page_l" onclick="getJson('lightnovel')">官能小说</button>
-        </li>
-        <li>
-            <button class='page' id="page_n" onclick="getJson('novel')">绯色小说</button>
-        </li>
-        <li>
-            <button class='page' id="page_u" onclick="getJson('updata')">补档与更新</button>
-        </li>
-        <li>
-            <button class='page' id="page_m" onclick="feed()">投食</button>
-        </li>
-    </ul>
-</div>
-<div class="body" id="featured">
-    <div id="msg">
-
-        <div class="" id="codeinput"><span>请填写答案：</span><input id="pw"><input class="btn"
-                                                                                           onclick="getPassword()"
-                                                                                           type="button" value="提交">
-        </div>
-        <p>1.答えはここに（<span style="color:white">558714</span>） </p>
-        <p>2.失效资源不定期补档，等不及的可以扫码投食任意金额提醒我，注意留言说明（比如失效资源名称）。</p>
-        <p>3.解压码一般都是<span style="color:red">Sophie_M</span>，有的资源解压码是<span style="color:red">SM</span>。</p>
-        <p>4.资源更新时间：2021年5月13日。</p>
-        <p>5.页面更新时间：2020年9月15日。</p>
+<section id="container">
+    <div class="password" id="codeinput"><span>请提交答案：</span><input id="pw" onkeydown="if(event.keyCode==13) {getPassword()}">   <input
+                                                                          onclick="getPassword()"
+                                                                          type="button" value="提交">
     </div>
-</div>
+        <h3>说明</h3>
+        <p>1.答えはここに（<span style="color:white">272849</span>） </p>
+        <p>2.失效资源不定期补档，等不及的可以扫码投食任意金额提醒我，注意留言说明（比如失效资源名称）。</p>
+        <p>3.解压码一般都是<span>Sophie_M</span>，有的资源解压码是<span">SM</span>。</p>
+        <p>4.资源更新时间：2021年5月13日。</p>
+        <p>5.页面更新时间：2021年6月16日。</p>
+</section>
+
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".large").colorbox();
+    });
+</script>
 </body>
-<script src="./js/javascript.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/javascript.js"></script>
 </html>
