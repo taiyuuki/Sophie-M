@@ -167,6 +167,7 @@ function feed() {
 
 function getJson(str) {
     var json;
+    var title;
     var request = new XMLHttpRequest();
     request.open("get", "data/" + str + ".json");
     request.responseType = 'text';
@@ -176,25 +177,33 @@ function getJson(str) {
         switch (str) {
             case "game":
                 json = json.game;
+                title = "游戏";
                 break;
             case "asmr":
                 json = json.asmr;
+                title = "音声";
                 break;
             case "lightnovel":
                 json = json.lightnovel;
+                title = "官能小说";
                 break;
             case "novel":
                 json = json.novel;
+                title = "绯色小说";
                 break;
             case "updata":
                 json = json.updata;
+                title = "补档和更新";
                 break;
         }
         var tests = checknum(binaryToStr(json[3].url,pass));
         if (tests){
             clear();
             var d0 = document.createElement("div");
+            var h3 = document.createElement("h3");
             d0.setAttribute("id","all");
+            h3.innerHTML=title;
+            document.getElementById("container").appendChild(h3);
             document.getElementById("container").appendChild(d0);
             for (var i = 0; i < json.length;i++){
                 var titleTem = json[i].title;//标题
