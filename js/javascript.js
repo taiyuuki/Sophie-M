@@ -159,7 +159,7 @@ function feed() {
     document.getElementById("container").appendChild(d0);
     var img = document.createElement("img");
     img.setAttribute("src","https://s1.ax1x.com/2020/04/14/Jp17oq.jpg");
-    img.setAttribute("width","100%")
+    img.setAttribute("width","100%");
     document.getElementById("all").appendChild(img);
     defautPageClass();
     document.getElementById('page_m').setAttribute('class', 'pageselected');
